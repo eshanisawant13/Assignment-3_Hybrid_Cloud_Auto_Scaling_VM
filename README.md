@@ -6,7 +6,7 @@ This project implements a **Hybrid Cloud Auto Scaling** architecture. The system
 <img width="1408" height="768" alt="b" src="https://github.com/user-attachments/assets/c5384cbd-9917-4cae-b7e3-c8f27632121f" />
 
 
----
+
 
 ## **2. Technology Stack**
 
@@ -23,7 +23,7 @@ This project implements a **Hybrid Cloud Auto Scaling** architecture. The system
 * **Terraform:** An Infrastructure-as-Code tool used to provision and manage the GCP Compute Engine instances.
 * **GCP SDK (gcloud):** Used for authentication between the local VM and Google Cloud.
   <img width="642" height="329" alt="image" src="https://github.com/user-attachments/assets/ad89a689-f701-41d0-a55e-0c58291806df" />
----
+
 
 ## **3. Backend Scripts & Why They Are Used**
 
@@ -39,7 +39,7 @@ This project implements a **Hybrid Cloud Auto Scaling** architecture. The system
 * **Purpose:** To define exactly what "75% usage" means.
 * **Logic:** It uses the expression `node_load1 > 0.75` for a duration of 30 seconds to ensure the system doesn't scale up for tiny, temporary spikes.
 
----
+
 ## **4. Configuration & Setup**
 
 ### **Step 1: Local VM Prep**
@@ -58,7 +58,7 @@ cd terraform
 terraform init
 ```
 
----
+
 ## **5. Execution Flow**
 
 1.  **Start the Scaler:**
