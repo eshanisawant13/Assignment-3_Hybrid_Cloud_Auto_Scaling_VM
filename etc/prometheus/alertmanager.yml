@@ -1,0 +1,14 @@
+global:
+  resolve_timeout: 1m
+
+route:
+  group_by: ['alertname']
+  group_wait: 5s       # Reduced for your demo so you don't have to wait long
+  group_interval: 5s
+  repeat_interval: 1h
+  receiver: 'terraform-scaler'
+
+receivers:
+- name: 'terraform-scaler'
+  webhook_configs:
+  - url: 'http://localhost:5001/webhook' # This MUST match your scaler.py port
