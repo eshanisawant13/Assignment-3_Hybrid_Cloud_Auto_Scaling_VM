@@ -1,0 +1,11 @@
+groups:
+  - name: cpu_alerts
+    rules:
+      - alert: HighCPUUsage
+        expr: node_load1 > 0.75
+        for: 30s
+        labels:
+          severity: critical
+        annotations:
+          summary: "CPU load is high on {{ $labels.instance }}"
+          description: "Load is at {{ $value }}, triggering GCP burst."
