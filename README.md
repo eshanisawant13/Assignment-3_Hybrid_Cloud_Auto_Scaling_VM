@@ -1,11 +1,10 @@
-This is a comprehensive, professional **README.md** file for your repository. It is designed to be clear, technically deep, and easy for your instructor to follow.
 
----
-
-# **Hybrid Cloud Bursting: Automated Scaling to GCP**
+# **Hybrid Cloud: Auto Scaling to GCP**
 
 ## **1. Project Description**
-This project implements a **Cloud Bursting** architecture. The system monitors a local virtualized environment (Ubuntu VM) for high resource consumption. When the system detects a CPU/Load threshold exceeding **75%**, it automatically triggers an Infrastructure-as-Code (IaC) pipeline to provision a new Virtual Machine in **Google Cloud Platform (GCP)** to handle the overflow workload.
+This project implements a **Hybrid Cloud Auto Scaling** architecture. The system monitors a local virtualized environment (Ubuntu VM) for high resource consumption. When the system detects a CPU/Load threshold exceeding **75%**, it automatically triggers an Infrastructure-as-Code (IaC) pipeline to provision a new Virtual Machine in **Google Cloud Platform (GCP)** to handle the overflow workload.
+<img width="1408" height="768" alt="b" src="https://github.com/user-attachments/assets/c5384cbd-9917-4cae-b7e3-c8f27632121f" />
+
 
 ---
 
@@ -19,27 +18,28 @@ This project implements a **Cloud Bursting** architecture. The system monitors a
 
 ### **The Integration Layer (Backend)**
 * **Python (Flask):** A lightweight web server that acts as the "Scaling Brain." It listens for signals from the monitoring stack.
+  <img width="1898" height="569" alt="image" src="https://github.com/user-attachments/assets/c30b02ac-ab3f-4839-b01a-347ce8cb2df3" />
+
 * **Terraform:** An Infrastructure-as-Code tool used to provision and manage the GCP Compute Engine instances.
 * **GCP SDK (gcloud):** Used for authentication between the local VM and Google Cloud.
-
+  <img width="642" height="329" alt="image" src="https://github.com/user-attachments/assets/ad89a689-f701-41d0-a55e-0c58291806df" />
 ---
 
 ## **3. Backend Scripts & Why They Are Used**
 
 ### **`scaler.py` (The Webhook Listener)**
-* **Why:** Prometheus cannot run shell commands directly. This script acts as the "bridge." It listens on port `5001` for a POST request from Alertmanager. 
+* **Purpose:** Prometheus cannot run shell commands directly. This script acts as the "bridge." It listens on port `5001` for a POST request from Alertmanager. 
 * **Logic:** When it receives a "firing" alert, it triggers a system call to execute Terraform. It also provides a web-based dashboard for manual stress testing.
 
 ### **`main.tf` (The Infrastructure Definition)**
-* **Why:** To ensure the cloud VM is created exactly the same way every time.
+* **Purpose:** To ensure the cloud VM is created exactly the same way every time.
 * **Role:** Defines the machine type (`e2-micro`), the OS image (`debian-11`), and the network settings for the Google Cloud instance.
 
 ### **`alert_rules.yml` (The Threshold Logic)**
-* **Why:** To define exactly what "75% usage" means.
+* **Purpose:** To define exactly what "75% usage" means.
 * **Logic:** It uses the expression `node_load1 > 0.75` for a duration of 30 seconds to ensure the system doesn't scale up for tiny, temporary spikes.
 
 ---
-
 ## **4. Configuration & Setup**
 
 ### **Step 1: Local VM Prep**
@@ -59,7 +59,6 @@ terraform init
 ```
 
 ---
-
 ## **5. Execution Flow**
 
 1.  **Start the Scaler:**
@@ -76,6 +75,4 @@ terraform init
     * **GCP** spins up a new instance within 30-60 seconds.
 
 ---
-
-## **6. Declaration (Plagiarism Clause)**
-I, **Eshani**, hereby declare that this implementation and all associated documentation are my original work. The logic for the hybrid cloud integration, the configuration of the monitoring stack, and the Terraform scripts were developed by me to fulfill the requirements of this assignment.
+So hence we saw the entire procedure how in hybrid cloud auto scaling is done , when the resource utilization exceeds above 75 % usage , new auto scaled VM's are created in Google Cloud Storage.
