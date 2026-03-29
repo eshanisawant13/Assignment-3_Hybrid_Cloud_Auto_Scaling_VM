@@ -5,9 +5,6 @@
 This project implements a **Hybrid Cloud Auto Scaling** architecture. The system monitors a local virtualized environment (Ubuntu VM) for high resource consumption. When the system detects a CPU/Load threshold exceeding **75%**, it automatically triggers an Infrastructure-as-Code (IaC) pipeline to provision a new Virtual Machine in **Google Cloud Platform (GCP)** to handle the overflow workload.
 <img width="1408" height="768" alt="b" src="https://github.com/user-attachments/assets/c5384cbd-9917-4cae-b7e3-c8f27632121f" />
 
-
-
-
 ## **2. Technology Stack**
 
 ### **The Monitoring Layer**
@@ -18,11 +15,12 @@ This project implements a **Hybrid Cloud Auto Scaling** architecture. The system
 
 ### **The Integration Layer (Backend)**
 * **Python (Flask):** A lightweight web server that acts as the "Scaling Brain." It listens for signals from the monitoring stack.
-  <img width="1898" height="569" alt="image" src="https://github.com/user-attachments/assets/c30b02ac-ab3f-4839-b01a-347ce8cb2df3" />
+ <img width="1177" height="537" alt="c" src="https://github.com/user-attachments/assets/b094cbcb-ed6f-437a-b507-db5b19ce3e0d" />
 
-* **Terraform:** An Infrastructure-as-Code tool used to provision and manage the GCP Compute Engine instances.
+ **Terraform:** An Infrastructure-as-Code tool used to provision and manage the GCP Compute Engine instances.
 * **GCP SDK (gcloud):** Used for authentication between the local VM and Google Cloud.
-  <img width="642" height="329" alt="image" src="https://github.com/user-attachments/assets/ad89a689-f701-41d0-a55e-0c58291806df" />
+  <img width="1670" height="848" alt="image" src="https://github.com/user-attachments/assets/1d358abb-7bc1-4731-8bd2-bbc755a0e1db" />
+
 
 
 ## **3. Backend Scripts & Why They Are Used**
